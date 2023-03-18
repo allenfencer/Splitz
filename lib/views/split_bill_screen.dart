@@ -52,7 +52,6 @@ class _SplitBillScreenState extends State<SplitBillScreen> {
             CustomTextField(
               hintText: 'Enter total amount',
               icon: Icons.currency_rupee,
-              onChanged: (data) {},
               inputType: TextInputType.number,
               controller: amountController,
               inputFormatters: [FilteringTextInputFormatter.digitsOnly],
@@ -65,7 +64,6 @@ class _SplitBillScreenState extends State<SplitBillScreen> {
               icon: Icons.edit_square,
               inputType: TextInputType.text,
               controller: splitTitleController,
-              onChanged: (data) {},
             ),
             CheckboxListTile(
                 enabled: false,

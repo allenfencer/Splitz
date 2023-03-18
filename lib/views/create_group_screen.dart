@@ -55,14 +55,6 @@ class _CreateGroupScreenState extends State<CreateGroupScreen> {
             CustomTextField(
               hintText: 'Group name',
               icon: Icons.group,
-              onChanged: (data) {},
-              validator: (val) {
-                if (val.isEmpty || val == null) {
-                  return 'Group name cannot be empty';
-                } else {
-                  return null;
-                }
-              },
               inputType: TextInputType.text,
               controller: groupController,
             ),
