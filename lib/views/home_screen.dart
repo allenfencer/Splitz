@@ -292,7 +292,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         height: 10,
                       ),
                       FutureBuilder(
-                        future: userRef,
+                        future: FirebaseFirestore.instance
+                            .collection('users')
+                            .doc(FirebaseAuth.instance.currentUser!.uid)
+                            .get(),
                         builder: (context, snapshot) {
                           if (snapshot.hasData) {
                             List<dynamic> grpData =

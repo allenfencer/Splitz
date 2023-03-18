@@ -79,13 +79,18 @@ class _SplitBillScreenState extends State<SplitBillScreen> {
                     splitEqually = val!;
                   });
                 }),
-           
             const SizedBox(
               height: 50,
             ),
             CustomButton(
                 buttonText: 'Split Bill',
                 function: () async {
+                  if (amountController.text.isEmpty &&
+                      splitTitleController.text.isEmpty) {
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text('Cannot create an empty bill')));
+                    return;
+                  }
                   final splitAmount = double.parse(amountController.text) /
                       (widget.noOfMembers! - 1);
                   List paidMembers = [FirebaseAuth.instance.currentUser!.uid];
