@@ -132,22 +132,21 @@ class _SplitBillScreenState extends State<SplitBillScreen> {
             CustomButton(
                 buttonText: 'Split Bill',
                 function: () async {
-                  final splitAmount = int.parse(amountController.text) /
+                  final splitAmount = double.parse(amountController.text) /
                       (widget.noOfMembers! - 1);
                   List paidMembers = [FirebaseAuth.instance.currentUser!.uid];
-                  await FirebaseService().addBillToGroup(
-                      widget.groupId!,
-                      amountController.text,
-                      splitTitleController.text,
-                      splitAmount.toString(),
-                      paidMembers);
-                  if (context.mounted) {
-                    Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const HomeScreen()),
-                        (route) => false);
-                  }
+                  await FirebaseService()
+                      .addBillToGroup(
+                          widget.groupId!,
+                          amountController.text,
+                          splitTitleController.text,
+                          splitAmount.toStringAsFixed(2),
+                          paidMembers)
+                      .then((value) => Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const HomeScreen()),
+                          (route) => false));
                 }),
             const SizedBox(
               height: 25,

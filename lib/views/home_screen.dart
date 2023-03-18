@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:splitz/constants/color_theme.dart';
 import 'package:splitz/global%20widgets/small_buttons.dart';
 import 'package:splitz/views/create_group_screen.dart';
@@ -128,9 +129,37 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text(
-                        'Dashboard',
-                        style: TT.f24w600,
+                      FutureBuilder(
+                        future: userRef,
+                        builder: (context, snapshot) {
+                          if (snapshot.hasData) {
+                            return Text(
+                              'Hey\n${snapshot.data!.get('name')}',
+                              style: TT.f24w600,
+                            );
+                          } else {
+                            return SizedBox(
+                              width: 200.0,
+                              height: 100.0,
+                              child: Shimmer.fromColors(
+                                  baseColor: Colors.red,
+                                  highlightColor: Colors.yellow,
+                                  child: Column(
+                                    children: [
+                                      Container(
+                                        width: 80,
+                                        color: Colors.grey.shade500,
+                                      ),
+                                      Container(
+                                        width: 150,
+                                        color: Colors.grey.shade500,
+                                      ),
+                                    ],
+                                  )),
+                            );
+                            ;
+                          }
+                        },
                       ),
                       GestureDetector(
                         onTap: () {
@@ -279,7 +308,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ],
                       ),
                       const SizedBox(
-                        height: 5,
+                        height: 10,
                       ),
                       FutureBuilder(
                         future: userRef,
@@ -319,14 +348,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                               );
                             }
-                            return SizedBox(
-                              height: 150,
-                              child: ListView.builder(
+                            return Expanded(
+                              child: GridView.builder(
+                                  gridDelegate:
+                                      const SliverGridDelegateWithFixedCrossAxisCount(
+                                          crossAxisSpacing: 15,
+                                          mainAxisSpacing: 15,
+                                          crossAxisCount: 2),
                                   padding: const EdgeInsets.symmetric(
                                       vertical: 15, horizontal: 10),
-                                  scrollDirection: Axis.horizontal,
+                                  scrollDirection: Axis.vertical,
                                   shrinkWrap: true,
-                                  physics: const BouncingScrollPhysics(),
+                                  physics: const NeverScrollableScrollPhysics(),
                                   itemCount: grpData.length,
                                   itemBuilder: ((context, index) {
                                     return FutureBuilder(
@@ -343,6 +376,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   MaterialPageRoute(
                                                       builder: (context) =>
                                                           ViewGroupScreen(
+                                                            refresh: refreshState,
+                                                            walletAmount: walletAmount.toInt(),
                                                               noOfMembers: snapshot
                                                                   .data!
                                                                   .get(
@@ -366,8 +401,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                           return const SizedBox();
                                         } else {
                                           return Container(
-                                              height: 80,
-                                              width: 125,
+                                              // height: 80,
+                                              // width: 125,
                                               alignment: Alignment.center,
                                               child:
                                                   const CircularProgressIndicator());
@@ -383,50 +418,46 @@ class _HomeScreenState extends State<HomeScreen> {
                       const SizedBox(
                         height: 25,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'Recent splits',
-                            style: TT.f18w400
-                                .copyWith(fontWeight: FontWeight.w600),
-                          ),
-                          SmallButtons(
-                            buttonTitle: 'Add',
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const SplitBillScreen()));
-                            },
-                          )
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 5,
-                      ),
-                      SizedBox(
-                        height: 150,
-                        child: ListView.builder(
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 15, horizontal: 10),
-                            scrollDirection: Axis.horizontal,
-                            shrinkWrap: true,
-                            physics: const BouncingScrollPhysics(),
-                            itemCount: 5,
-                            itemBuilder: ((context, index) {
-                              return const CustomListTile(
-                                title: 'IV',
-                              );
-                            })),
-                      ),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      // Text(
-                      //   'View Transactions',
-                      //   style: TT.f18w400.copyWith(fontWeight: FontWeight.w600),
+                      // Row(
+                      //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      //   children: [
+                      //     Text(
+                      //       'Recent splits',
+                      //       style: TT.f18w400
+                      //           .copyWith(fontWeight: FontWeight.w600),
+                      //     ),
+                      //     SmallButtons(
+                      //       buttonTitle: 'Add',
+                      //       onTap: () {
+                      //         Navigator.push(
+                      //             context,
+                      //             MaterialPageRoute(
+                      //                 builder: (context) =>
+                      //                     const SplitBillScreen()));
+                      //       },
+                      //     )
+                      //   ],
+                      // ),
+                      // const SizedBox(
+                      //   height: 5,
+                      // ),
+                      // SizedBox(
+                      //   height: 150,
+                      //   child: ListView.builder(
+                      //       padding: const EdgeInsets.symmetric(
+                      //           vertical: 15, horizontal: 10),
+                      //       scrollDirection: Axis.horizontal,
+                      //       shrinkWrap: true,
+                      //       physics: const BouncingScrollPhysics(),
+                      //       itemCount: 5,
+                      //       itemBuilder: ((context, index) {
+                      //         return const CustomListTile(
+                      //           title: 'IV',
+                      //         );
+                      //       })),
+                      // ),
+                      // const SizedBox(
+                      //   height: 30,
                       // ),
                     ],
                   ),

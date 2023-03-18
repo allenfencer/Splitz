@@ -35,6 +35,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_secure_storage: ^8.0.0
+  shimmer: ^2.0.0
 
 dev_dependencies:
   flutter_lints: ^2.0.0

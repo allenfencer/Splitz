@@ -11,11 +11,8 @@ class CustomListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(right: 18),
-      padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+      padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
       alignment: Alignment.center,
-      height: 80,
-      width: 125,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           color: Colors.white,
