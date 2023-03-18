@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "332435481508",
+    "project_id": "splitz-18f5e",
+    "storage_bucket": "splitz-18f5e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:332435481508:android:d0a59d4cd0b2e08e715731",
+        "android_client_info": {
+          "package_name": "com.allenfencer.splitz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "332435481508-n4q880mdmpudvkbh0vni14s1b679up05.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsQTw1BolfLYlNYn3bJWe264NpCQRb1jU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "332435481508-n4q880mdmpudvkbh0vni14s1b679up05.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
