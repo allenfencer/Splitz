@@ -79,53 +79,7 @@ class _SplitBillScreenState extends State<SplitBillScreen> {
                     splitEqually = val!;
                   });
                 }),
-            // const Text(
-            //   'People',
-            //   style: TT.f20w600,
-            // ),
-            // const SizedBox(
-            //   height: 15,
-            // ),
-            // CustomTextField(
-            //   hintText: 'Search name',
-            //   icon: Icons.person_add,
-            //   inputType: TextInputType.text,
-            //   controller: userSearchController,
-            //   onChanged: (newVal) {},
-            // ),
-            // StreamBuilder(
-            //   stream: userRef,
-            //   builder: (context, snapshot) {
-            //     if (snapshot.connectionState == ConnectionState.waiting) {
-            //       return const Center(
-            //         child: CircularProgressIndicator(),
-            //       );
-            //     } else if (snapshot.hasError) {
-            //       return const Text('Something went wrong');
-            //     } else if (snapshot.hasData) {
-            //       return Expanded(
-            //         child: ListView.builder(
-            //             padding: const EdgeInsets.only(top: 10),
-            //             shrinkWrap: true,
-            //             scrollDirection: Axis.vertical,
-            //             physics: const BouncingScrollPhysics(),
-            //             itemCount: snapshot.data!.docs.length,
-            //             itemBuilder: ((context, index) {
-            //               return UserCardTile(
-            //                 id: '',
-            //                 name: snapshot.data!.docs[index]['name'],
-            //                 number: snapshot.data!.docs[index]['phone'],
-            //                 function: (val) {},
-            //               );
-            //             })),
-            //       );
-            //     } else {
-            //       return const Center(
-            //         child: CircularProgressIndicator(),
-            //       );
-            //     }
-            //   },
-            // ),
+           
             const SizedBox(
               height: 50,
             ),

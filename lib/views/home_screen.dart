@@ -264,25 +264,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Text(
-                      //   'Recent Searches',
-                      //   style: TT.f18w400.copyWith(fontWeight: FontWeight.w600),
-                      // ),
-                      // const SizedBox(
-                      //   height: 20,
-                      // ),
-                      // TextFormField(
-                      //     autovalidateMode: AutovalidateMode.onUserInteraction,
-                      //     decoration: InputDecoration(
-                      //         hintText: 'Search',
-                      //         hintStyle: TT.f16w600.copyWith(
-                      //             color: Colors.grey.shade400,
-                      //             fontWeight: FontWeight.w400),
-                      //         border: InputBorder.none,
-                      //         enabledBorder: InputBorder.none,
-                      //         suffixIcon: const Icon(Icons.search),
-                      //         filled: true,
-                      //         fillColor: ColorTheme.backgroundColor)),
                       const SizedBox(
                         height: 10,
                       ),
@@ -376,8 +357,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   MaterialPageRoute(
                                                       builder: (context) =>
                                                           ViewGroupScreen(
-                                                            refresh: refreshState,
-                                                            walletAmount: walletAmount.toInt(),
+                                                              refresh:
+                                                                  refreshState,
+                                                              walletAmount:
+                                                                  walletAmount
+                                                                      .toInt(),
                                                               noOfMembers: snapshot
                                                                   .data!
                                                                   .get(
@@ -401,8 +385,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                           return const SizedBox();
                                         } else {
                                           return Container(
-                                              // height: 80,
-                                              // width: 125,
                                               alignment: Alignment.center,
                                               child:
                                                   const CircularProgressIndicator());
@@ -418,47 +400,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       const SizedBox(
                         height: 25,
                       ),
-                      // Row(
-                      //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      //   children: [
-                      //     Text(
-                      //       'Recent splits',
-                      //       style: TT.f18w400
-                      //           .copyWith(fontWeight: FontWeight.w600),
-                      //     ),
-                      //     SmallButtons(
-                      //       buttonTitle: 'Add',
-                      //       onTap: () {
-                      //         Navigator.push(
-                      //             context,
-                      //             MaterialPageRoute(
-                      //                 builder: (context) =>
-                      //                     const SplitBillScreen()));
-                      //       },
-                      //     )
-                      //   ],
-                      // ),
-                      // const SizedBox(
-                      //   height: 5,
-                      // ),
-                      // SizedBox(
-                      //   height: 150,
-                      //   child: ListView.builder(
-                      //       padding: const EdgeInsets.symmetric(
-                      //           vertical: 15, horizontal: 10),
-                      //       scrollDirection: Axis.horizontal,
-                      //       shrinkWrap: true,
-                      //       physics: const BouncingScrollPhysics(),
-                      //       itemCount: 5,
-                      //       itemBuilder: ((context, index) {
-                      //         return const CustomListTile(
-                      //           title: 'IV',
-                      //         );
-                      //       })),
-                      // ),
-                      // const SizedBox(
-                      //   height: 30,
-                      // ),
                     ],
                   ),
                 )

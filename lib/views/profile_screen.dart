@@ -1,13 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:splitz/constants/color_theme.dart';
-import 'package:splitz/global%20widgets/custom_button.dart';
 import 'package:splitz/services/auth_service.dart';
-import 'package:splitz/services/firebase_services.dart';
 import 'package:splitz/views/login_screen.dart';
 
 import '../constants/text_theme.dart';

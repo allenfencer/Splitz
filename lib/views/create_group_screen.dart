@@ -21,6 +21,7 @@ class CreateGroupScreen extends StatefulWidget {
 }
 
 class _CreateGroupScreenState extends State<CreateGroupScreen> {
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
   TextEditingController groupController = TextEditingController();
   TextEditingController userSearchController = TextEditingController();
   final userRef = FirebaseFirestore.instance.collection('users').snapshots();
@@ -51,12 +52,22 @@ class _CreateGroupScreenState extends State<CreateGroupScreen> {
             const SizedBox(
               height: 15,
             ),
-            CustomTextField(
-              hintText: 'Group name',
-              icon: Icons.group,
-              onChanged: (data) {},
-              inputType: TextInputType.text,
-              controller: groupController,
+            Form(
+              key: formKey,
+              child: CustomTextField(
+                hintText: 'Group name',
+                icon: Icons.group,
+                onChanged: (data) {},
+                validator: (val) {
+                  if (val.isEmpty || val == null) {
+                    return 'Group name cannot be empty';
+                  } else {
+                    return null;
+                  }
+                },
+                inputType: TextInputType.text,
+                controller: groupController,
+              ),
             ),
             const SizedBox(
               height: 25,
@@ -107,14 +118,20 @@ class _CreateGroupScreenState extends State<CreateGroupScreen> {
             CustomButton(
                 buttonText: 'Create Group',
                 function: () async {
-                  await FirebaseService().createGroup(
-                      groupController.text, groupMemberIds.toSet().toList());
-                  if (!mounted) return;
-                  Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const HomeScreen()),
-                      (route) => false).then((value) => widget.refreshState());
+                  if (formKey.currentState!.validate()) {
+                    await FirebaseService().createGroup(
+                        groupController.text, groupMemberIds.toSet().toList());
+                    if (!mounted) return;
+                    Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const HomeScreen()),
+                            (route) => false)
+                        .then((value) => widget.refreshState());
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text('Group name cannot be empty')));
+                  }
                 }),
             const SizedBox(
               height: 25,

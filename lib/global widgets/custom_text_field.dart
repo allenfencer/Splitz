@@ -5,6 +5,7 @@ import '../constants/color_theme.dart';
 import '../constants/text_theme.dart';
 
 class CustomTextField extends StatelessWidget {
+  final Function(String)? validator;
   final TextEditingController controller;
   final List<TextInputFormatter>? inputFormatters;
   final String hintText;
@@ -14,6 +15,7 @@ class CustomTextField extends StatelessWidget {
 
   CustomTextField(
       {super.key,
+      this.validator,
       this.onChanged,
       this.inputFormatters,
       required this.hintText,
@@ -32,6 +34,9 @@ class CustomTextField extends StatelessWidget {
             onChanged!;
           },
           controller: controller,
+          validator: (value) {
+            validator!;
+          },
           keyboardType: inputType,
           autovalidateMode: AutovalidateMode.onUserInteraction,
           inputFormatters: inputFormatters,
