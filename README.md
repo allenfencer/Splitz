@@ -1,4 +1,4 @@
-## *Splitz*
+# Splitz
 Splitz is a simple and user-friendly bill splitting mobile application designed to help people form groups and split their expenses easily.
 The app also has a wallet inorder to help the people pay their split expenses.
 
@@ -9,8 +9,9 @@ The app also has a wallet inorder to help the people pay their split expenses.
 * Specify the reason for the expense (e.g. food, drinks, transportation)
 * Split the expense among users equally
 
-## Video Demo
 
+## Video Demo
+https://user-images.githubusercontent.com/68908769/226165453-e0c4f07c-7f9f-4028-9bd1-89467a8db7d6.mp4
 
 
 
