@@ -22,7 +22,7 @@ Before starting, make sure you have the following tools installed on your machin
 
 #### 1) Clone the Project ####
 ```
-git clone https://github.com/your-username/your-project.git
+git clone https://github.com/allenfencer/Splitz.git
 ```
 #### 2) Once the project is cloned, navigate into the project directory ####
 ```
