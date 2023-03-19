@@ -69,7 +69,8 @@ class _CreateGroupScreenState extends State<CreateGroupScreen> {
               height: 15,
             ),
             StreamBuilder(
-              stream: userRef,
+              stream:
+                  FirebaseFirestore.instance.collection('users').snapshots(),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return const Center(

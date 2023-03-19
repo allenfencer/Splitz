@@ -90,7 +90,7 @@ class _SplitBillScreenState extends State<SplitBillScreen> {
                     return;
                   }
                   final splitAmount = double.parse(amountController.text) /
-                      (widget.noOfMembers! - 1);
+                      (widget.noOfMembers!);
                   List paidMembers = [FirebaseAuth.instance.currentUser!.uid];
                   await FirebaseService()
                       .addBillToGroup(
